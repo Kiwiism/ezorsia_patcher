@@ -1,6 +1,6 @@
-# Ezorsia Patcher
+# Ezorsia Patcher for v83
 
-This repository is a personal patch-focused fork of **MapleEzorsia v2**.
+This repository is a personal patch-focused fork of **MapleEzorsia v2** for **MapleStory v83**.
 
 Original upstream source:
 [444Ro666/MapleEzorsia-v2](https://github.com/444Ro666/MapleEzorsia-v2)
@@ -8,9 +8,12 @@ Original upstream source:
 Original Ezorsia base:
 [izarooni/MapleEzorsia](https://github.com/izarooni/MapleEzorsia)
 
+AdventureMS cleanv83/Ezorsia patch reference:
+[adventurems/cleanv83dll](https://github.com/adventurems/cleanv83dll)
+
 ## What Changed In This Fork
 
-This fork keeps the MapleEzorsia v2 HD/client-localhost base, but reorganizes the client patches so they are easier to audit, tune, and enable selectively.
+This fork keeps the MapleEzorsia v2 HD/client-localhost base for v83, but reorganizes the client patches so they are easier to audit, tune, and enable selectively.
 
 General changes:
 
