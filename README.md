@@ -1,3 +1,34 @@
+# Ezorsia Patcher
+
+This repository is a personal patch-focused fork of **MapleEzorsia v2**.
+
+Original upstream source:
+[444Ro666/MapleEzorsia-v2](https://github.com/444Ro666/MapleEzorsia-v2)
+
+Original Ezorsia base:
+[izarooni/MapleEzorsia](https://github.com/izarooni/MapleEzorsia)
+
+## What Changed In This Fork
+
+This fork keeps the MapleEzorsia v2 HD/client-localhost base, but reorganizes the client patches so they are easier to audit, tune, and enable selectively.
+
+General changes:
+
+- Added a single patch control file: `ezorsia/PatchToggles.h`.
+- Moved gameplay/client patches into `ezorsia/AdventurePatches.cpp`.
+- Added `ezorsia/AdventureCodecaves.h` for patch-specific codecaves and assembly hooks.
+- Reduced public `config.ini` exposure so external config is focused on resolution and `sleepTime`.
+- Moved gameplay values such as move speed cap, damage cap, ladder/rope speed, cooldowns, Maker color thresholds, and weapon multipliers into internal numeric settings.
+- Transferred and organized cleanv83-style `Client.cpp` patches as toggleable patch blocks.
+- Preserved disabled/commented experimental patches as `0` by default so they can be reviewed and enabled manually.
+- Split related features into smaller toggles where useful, such as Boomerang Step air/terrain behavior.
+- Added comments beside patch toggles describing what each patch changes.
+- Kept toggle values aligned for easier multi-cursor editing.
+
+Build output remains the same style as MapleEzorsia v2: compile x86 Release and use the produced `dinput8.dll`.
+
+---
+
 # MapleEzorsia v2 (Standalone HD dll client/localhost for v83)
 #### Please follow [setup instructions here](https://github.com/444Ro666/MapleEzorsia-v2/wiki/v83%E2%80%90Client%E2%80%90Setup%E2%80%90and%E2%80%90Development%E2%80%90Guide) for optimal setup, [gameplay after optimal setup](https://www.youtube.com/watch?v=HxGKn0EjPC0). see the [change log to make sure you're up to date](https://github.com/444Ro666/MapleEzorsia-v2/wiki/Change-Log).     Is your game not working? [Go to Troubleshooting Section](https://github.com/444Ro666/MapleEzorsia-v2/wiki/v83%E2%80%90Client%E2%80%90Setup%E2%80%90and%E2%80%90Development%E2%80%90Guide#troubleshooting) of the setup guide and see if any fixes help      _________IMPORTANT NOTE: make sure you re-download config.ini and dependent files when updating, there could be changes
 
