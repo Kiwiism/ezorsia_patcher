@@ -20,9 +20,6 @@ public:
 	static unsigned int v83ArrayForCustomEXP[];
 	static unsigned int v62ArrayForCustomEXP[];
 	static unsigned int expTableMemSize;
-	static const char* use_custom_dll_1;
-	static const char* use_custom_dll_2;
-	static const char* use_custom_dll_3;
 	static bool usingEzorsiaV2Wz;
 	static bool CustomLoginFrame;
 	static bool bigLoginFrame;

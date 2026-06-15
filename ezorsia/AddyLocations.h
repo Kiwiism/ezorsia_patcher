@@ -1,5 +1,11 @@
 #pragma once
-const DWORD dwDInput8DLLInject = 0x00796357; 
+
+// Storage used by transferred cleanv83 patches.
+static DWORD skillup_btn_Array[48];
+static unsigned char shop_btn_Array[80];
+static unsigned char Uncap_Stat_Arr_1[] = { 0xFF, 0xFE, 12 };
+
+const DWORD dwDInput8DLLInject = 0x00796357;
 const DWORD dwMovementFlushInterval = 0x0068A83F;
 const DWORD dwStatWndOnStatChange = 0x00A20213;
 const DWORD dwUserEmoteCoolTime = 0x00A244AE;
@@ -7,7 +13,7 @@ const DWORD dwUserGivePopularityCoolTime = 0x00A23F28;
 const DWORD dwMessageChatDelay = 0x00490651;
 const DWORD dwMessageChatSpam = 0x00490607;
 const DWORD dwRemoteAddress = 0x00AFE084;
-const DWORD dwIGCipherHash = 0x00A4A845; //related to packet encryption, not used, kept for reference
+const DWORD dwIGCipherHash = 0x00A4A845; // related to packet encryption, not used, kept for reference
 const DWORD dwIGCipherVirtual1 = 0x00A4A8DA;
 const DWORD dwIGCipherVirtual2 = 0x00A4A9BF;
 const DWORD dwIGCipherDecrypt = 0x00A4A942;
@@ -15,13 +21,13 @@ const DWORD dwIGCipherDecryptStr = 0x00A4A9F7;
 const DWORD dwUnlimitedSoulRush = 0x0096BF09;
 const DWORD dwUnlimitedFJ = 0x0096BEB5;
 const DWORD dwUnlimitedFJYVector = 0x0096BF86;
-//0x008DB181 + 1	position of the line breaks in the text displayed in this chat log //ty dream
-//008DFB06 008D4B75 008D4C27 008D4CBF 008D6308 //related to vertical scrolling //ty rynyan
-//005F456A version number edit //ty windy
-//008DFBA0 character typing limit	//ty chris
-//008C4EA2 stat window related?? //ty masterrulax
-//skill tooltip extension x 008F26F3/008F26F8 y //ty rynyan
-//item UI tooltip extension 008EEEAF //ty rain
+// 0x008DB181 + 1	position of the line breaks in the text displayed in this chat log //ty dream
+// 008DFB06 008D4B75 008D4C27 008D4CBF 008D6308 //related to vertical scrolling //ty rynyan
+// 005F456A version number edit //ty windy
+// 008DFBA0 character typing limit	//ty chris
+// 008C4EA2 stat window related?? //ty masterrulax
+// skill tooltip extension x 008F26F3/008F26F8 y //ty rynyan
+// item UI tooltip extension 008EEEAF //ty rain
 
 // ===== Resolution Modifications =====
 const DWORD dwByteAvatarMegaHPos = 0x0045B97E;
@@ -42,8 +48,8 @@ const DWORD dwTempStatIconVPos = 0x007B2C97;
 const DWORD dwTempStatIconHpos = 0x007B2CB5;
 const DWORD dwTempStatCoolTimeVPos = 0x007B2DA0;
 const DWORD dwTempStatCoolTimeHPos = 0x007B2DBE;
-const DWORD dwQuickSlotInitVPos = 0x008D1793;	//008D182C	layer for keys like ins. del. etc..
-const DWORD dwQuickSlotInitHPos = 0x008D179A;	//008D155A, 008D1ABE	other related layer
+const DWORD dwQuickSlotInitVPos = 0x008D1793;	// 008D182C	layer for keys like ins. del. etc..
+const DWORD dwQuickSlotInitHPos = 0x008D179A;	// 008D155A, 008D1ABE	other related layer
 const DWORD dwQuickSlotVPos = 0x008DF782;
 const DWORD dwQuickSlotHPos = 0x008DF7F8;
 const DWORD dwQuickSlotCWndVPos = 0x008DE8EE;
@@ -62,9 +68,9 @@ const DWORD dwAlwaysViewRestoreFix = 0x00642105;
 const DWORD dwAlwaysViewRestorerFixRtm = 0x0064210C;
 const int dwAlwaysViewRestoreFixNOPs = 7;
 
-//const DWORD dwloginFrameFix = 0x005F4C11;
-//const DWORD dwloginFrameFixCall = 0x009DE4D2;
-//const int loginFrameFixNOPs = 5;
+// const DWORD dwloginFrameFix = 0x005F4C11;
+// const DWORD dwloginFrameFixCall = 0x009DE4D2;
+// const int loginFrameFixNOPs = 5;
 
 const DWORD dwLoginBackCanvasFix = 0x0060E1BF;
 const DWORD dwLoginBackCanvasFixRetn = 0x0060E1CA;
@@ -74,11 +80,11 @@ const DWORD dwLoginViewRecFix = 0x0062B334;
 const DWORD dwLoginViewRecFixRetn = 0x0062B345;
 const int LoginViewRecFixNOPs = 17;
 
-const DWORD dwLoginBackBtnFix = 0x0060E69D;	//not used, kept for referrence
+const DWORD dwLoginBackBtnFix = 0x0060E69D;	// not used, kept for referrence
 const DWORD dwLoginBackBtnFixRetn = 0x0060E6A4;
 const int LoginBackBtnFixNOPs = 7;
 
-const DWORD dwInitialLoginScreenBackXY = 0x005F4B48;	//not used, kept for referrence, resets on back step from next step
+const DWORD dwInitialLoginScreenBackXY = 0x005F4B48;	// not used, kept for referrence, resets on back step from next step
 
 const DWORD dwLoginDescriptorFix = 0x0060D85B;
 const DWORD dwLoginDescriptorFixRetn = 0x0060D88E;
@@ -128,8 +134,8 @@ const DWORD dwMuruengraidEngBar2 = 0x00554265;
 const DWORD dwMuruengraidEngBar2Retn = 0x0055426A;
 const int MuruengraidEngBar2NOPs = 5;
 
-const DWORD dwMuruengraidClearRoundUI = 0x0053500A;	//; int __cdecl sub_43E86F(int, wchar_t *, int, int, int, int, int, int, int, int)
-const DWORD dwMuruengraidClearRoundUIRetn = 0x00535014;	//may be used to fix other cases of pop-up UI misallignment
+const DWORD dwMuruengraidClearRoundUI = 0x0053500A;	// ; int __cdecl sub_43E86F(int, wchar_t *, int, int, int, int, int, int, int, int)
+const DWORD dwMuruengraidClearRoundUIRetn = 0x00535014;	// may be used to fix other cases of pop-up UI misallignment
 const int MuruengraidClearRoundUINOPs = 10;
 
 const DWORD dwMuruengraidTimerCanvas = 0x00555314;
@@ -156,24 +162,24 @@ const DWORD dwStatsSubMov = 0x008C5112;
 const DWORD dwStatsSubMovRetn = 0x008C5117;
 const int StatsSubMovNOPs = 5;
 
-//beginning of packed client run addies
+// beginning of packed client run addies
 const DWORD dwCLoginSendCheckPasswordPacket = 0x005F6994;
 const DWORD dwCLoginSendCheckPasswordPacketRetn = 0x005F6B5D;
 const int CLoginSendCheckPasswordPacketNops = 6;
 const DWORD dw0x00A63FF3 = 0x00A63FF3;
 const DWORD dw0x00A63FF3Retn = 0x00A64021;
 const int dw0x00A63FF3Nops = 46;
-//addresses hooked by CRCbypassed v83 version (taken from released semi-named v83 IDB) to redirect to their section. may be incomplete
-//0x0044E550 //0x0044E5DB //0x0044E71D //0x0044E8B4 //0x0044EA6F //0x0044ECA1 //0x0044ED52 //0x00494D3B //0x00494EEC //0x009F4E84
-//0x009F4F12 //0x009F503C //0x009F526F //0x009F6F36 //0x009F7CFA //0x009F84E9 //0x00A4BDFE //0x00A4BD99 //0x00A4BD05 //0x00A4BB39
-//end of packed client run addies
+// addresses hooked by CRCbypassed v83 version (taken from released semi-named v83 IDB) to redirect to their section. may be incomplete
+// 0x0044E550 //0x0044E5DB //0x0044E71D //0x0044E8B4 //0x0044EA6F //0x0044ECA1 //0x0044ED52 //0x00494D3B //0x00494EEC //0x009F4E84
+// 0x009F4F12 //0x009F503C //0x009F526F //0x009F6F36 //0x009F7CFA //0x009F84E9 //0x00A4BDFE //0x00A4BD99 //0x00A4BD05 //0x00A4BB39
+// end of packed client run addies
 
 const DWORD dwCUIStatusBarChatLogAddBypass = 0x008DB387;
 const DWORD dwCUIStatusBarChatLogAddBypassRetn = 0x008DB38D;
 const DWORD dwCUIStatusBarChatLogAddBypass2Retn = 0x008DB39A;
 const int dwCUIStatusBarChatLogAddBypassNops = 6;
 
-//my cash shop fix
+// my cash shop fix
 const DWORD dwCashFix1 = 0x00469414;
 const DWORD dwCashFix1Rtm = 0x00469420;
 const int dwCashFix1NOPs = 12;
@@ -202,7 +208,7 @@ const DWORD dwCashFixOnOff = 0x00776B5F;
 const DWORD dwCashFixOnOffRtm = 0x00776B64;
 const DWORD dwCashFixOnOffCall = 0x004732D2;
 const int dwCashFixOnOffNOPs = 5;
-//const DWORD dwCashFixOnOffCall2 = 0x00BEC20C;
+// const DWORD dwCashFixOnOffCall2 = 0x00BEC20C;
 const DWORD dwCashFixPrev = 0x004AB10F;
 const DWORD dwCashFixPrevRtm = 0x004AB11D;
 const int dwCashFixPrevNOPs = 14;

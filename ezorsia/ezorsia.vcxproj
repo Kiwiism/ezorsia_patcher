@@ -175,6 +175,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdventurePatches.h" />
+    <ClInclude Include="AdventureCodecaves.h" />
+    <ClInclude Include="PatchToggles.h" />
     <ClInclude Include="AddyLocations.h">
       <FileType>CppHeader</FileType>
     </ClInclude>
@@ -213,6 +216,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdventurePatches.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="dinput8.cpp" />
     <ClCompile Include="MainMain.cpp" />

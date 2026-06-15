@@ -8,7 +8,13 @@
 
 // reference additional headers your program requires here
 
+#include <algorithm>
+#include <cstdint>
+#include <cstring>
 #include <iostream>
+#include <iterator>
+#include <vector>
 #include "Client.h"
+#include "PatchToggles.h"
 #include "Memory.h"
 #include "MainMain.h"
