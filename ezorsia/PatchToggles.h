@@ -6,34 +6,34 @@
 
 namespace PatchSettings
 {
-	inline constexpr char ServerIp[] = "127.0.0.1";
+	inline constexpr char ServerIp[] = "127.0.0.1"; // Always used by localhost redirect; no PATCH_* toggle.
 
 	// Core client behavior
-	inline constexpr int GainMessageCount = 26;
-	inline constexpr bool UseCustomLoginFrame = false;
-	inline constexpr bool UseCustomCashShopFrame = false;
-	inline constexpr bool UseV62ExpTable = false;
+	inline constexpr int GainMessageCount = 26; // Always used by gain-message positioning; no PATCH_* toggle.
+	inline constexpr bool UseCustomLoginFrame = false; // Always read by MainMain::CustomLoginFrame; no PATCH_* toggle.
+	inline constexpr bool UseCustomCashShopFrame = false; // Always read by MainMain::ownCashShopFrame; no PATCH_* toggle.
+	inline constexpr bool UseV62ExpTable = false; // Always read by MainMain::useV62_ExpTable; no PATCH_* toggle.
 
 	// Gameplay values
-	inline constexpr int MovementSpeedCap = 160;
-	inline constexpr double DamageCap = 999999.0;
-	inline constexpr double LadderRopeSpeed = 4.0;
-	inline constexpr int AranComboDurationMs = 7000;
-	inline constexpr unsigned int KnockbackDistance = 700;
-	inline constexpr unsigned int RushCooldownMs = 100;
-	inline constexpr unsigned int RecoilShotCooldownMs = 500; // AdventureMS recommended; vanilla is 2000.
-	inline constexpr unsigned int BattleshipAnimationSpeed = 28; // AdventureMS recommended.
-	inline constexpr int ChainLightningHorizontalRange = 5000;
-	inline constexpr int ChainLightningVerticalRange = 500;
-	inline constexpr unsigned int PasswordLength = 20; // AdventureMS recommended.
-	inline constexpr unsigned int MountSpeedCap = 200; // AdventureMS recommends 600; patch is untested.
-	inline constexpr unsigned int MobStatCap = 999999; // AdventureMS recommended.
-	inline constexpr unsigned int MakerDropdownSize = 20; // AdventureMS recommended.
-	inline constexpr unsigned int MakerPurpleStatThreshold = 23; // Vanilla is 23.
-	inline constexpr unsigned int MakerYellowStatThreshold = 40; // Vanilla is 40.
+	inline constexpr int MovementSpeedCap = 160; // Used by PATCH_MOVEMENT_SPEED_CAP.
+	inline constexpr double DamageCap = 999999.0; // Used by PATCH_UNCAPPED_PLAYER_STATS.
+	inline constexpr double LadderRopeSpeed = 4.0; // Used by PATCH_LADDER_ROPE_SPEED.
+	inline constexpr int AranComboDurationMs = 7000; // Used by PATCH_ARAN_COMBO_UPTIME.
+	inline constexpr unsigned int KnockbackDistance = 700; // Used by PATCH_KNOCKBACK_DISTANCE.
+	inline constexpr unsigned int RushCooldownMs = 100; // Used by PATCH_RUSH_COOLDOWN.
+	inline constexpr unsigned int RecoilShotCooldownMs = 500; // Used by PATCH_RECOIL_SHOT_COOLDOWN; vanilla is 2000.
+	inline constexpr unsigned int BattleshipAnimationSpeed = 28; // Used by PATCH_BATTLESHIP_ANIMATION_SPEED.
+	inline constexpr int ChainLightningHorizontalRange = 5000; // Used by PATCH_CHAIN_LIGHTNING_RANGE.
+	inline constexpr int ChainLightningVerticalRange = 500; // Used by PATCH_CHAIN_LIGHTNING_RANGE.
+	inline constexpr unsigned int PasswordLength = 20; // Used by PATCH_PASSWORD_LENGTH.
+	inline constexpr unsigned int MountSpeedCap = 200; // Used by PATCH_MOUNT_SPEED_CAP; AdventureMS recommends 600.
+	inline constexpr unsigned int MobStatCap = 999999; // Used by PATCH_UNCAPPED_MOB_STATS.
+	inline constexpr unsigned int MakerDropdownSize = 20; // Used by PATCH_MAKER_DROPDOWN_SIZE.
+	inline constexpr unsigned int MakerPurpleStatThreshold = 23; // Used by PATCH_MAKER_ITEM_COLORS; vanilla is 23.
+	inline constexpr unsigned int MakerYellowStatThreshold = 40; // Used by PATCH_MAKER_ITEM_COLORS; vanilla is 40.
 
-	inline constexpr double OneHandedAxeBwMultiplier = 3.2; // Vanilla is 3.2; AdventureMS recommends 3.6.
-	inline constexpr double TwoHandedAxeBwMultiplier = 3.4; // Vanilla is 3.4; AdventureMS recommends 4.4.
+	inline constexpr double OneHandedAxeBwMultiplier = 3.2; // Used by PATCH_ONE_HANDED_AXE_BW_MULTIPLIER; AdventureMS recommends 3.6.
+	inline constexpr double TwoHandedAxeBwMultiplier = 3.4; // Used by PATCH_TWO_HANDED_AXE_BW_MULTIPLIER; AdventureMS recommends 4.4.
 }
 
 // Gameplay: skills
