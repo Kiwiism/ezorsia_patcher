@@ -87,7 +87,7 @@ void Client::UpdateResolution() {
 	Memory::WriteInt(dwViewPortHeight + 3, m_nGameHeight); // lea eax,[esi+eax-600]
 	Memory::WriteInt(dwViewPortWidth + 3, m_nGameWidth);	// lea eax,[ecx+eax-800]
 
-	Memory::WriteInt(dwToolTipLimitVPos + 1, m_nGameWidth - 1); // mov eax,599 ; CUIToolTip::MakeLayer
+	Memory::WriteInt(dwToolTipLimitVPos + 1, m_nGameHeight - 1); // mov eax,599 ; CUIToolTip::MakeLayer
 	Memory::WriteInt(dwToolTipLimitHPos + 1, m_nGameWidth - 1); // mov eax,799 ; CUIToolTip::MakeLayer
 
 	Memory::WriteInt(dwTempStatToolTipDraw + 3, -m_nGameWidth + 6); // lea eax,[eax+ecx-797] ; CTemporaryStatView::ShowToolTip
