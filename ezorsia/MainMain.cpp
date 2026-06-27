@@ -6,6 +6,29 @@
 namespace
 {
 	INIReader reader("config.ini");
+
+	void LoadConfiguredDll(const char* key)
+	{
+		const std::string dllPath = reader.Get("customDlls", key, "");
+		if (dllPath.empty()) { return; }
+
+		if (!LoadLibraryA(dllPath.c_str())) {
+			const DWORD error = GetLastError();
+			const std::string message = "Failed to load custom DLL from config.ini:\n\n" + dllPath +
+				"\n\nWindows error: " + std::to_string(error);
+			Sleep(20);
+			SuspendThread(MainMain::mainTHread);
+			MessageBoxA(NULL, message.c_str(), "custom DLL load failed", MB_ICONERROR);
+			ExitProcess(0);
+		}
+	}
+
+	void LoadConfiguredDlls()
+	{
+		LoadConfiguredDll("dll1");
+		LoadConfiguredDll("dll2");
+		LoadConfiguredDll("dll3");
+	}
 }
 
 MainMain* MainMain::_s_pInstance;
@@ -103,6 +126,8 @@ MainMain::MainMain(std::function<void()> pPostMutexFunc)
 
 	// Themida may need a short delay before patches are applied to the unpacked client.
 	if (sleepTime != 0) { Sleep(sleepTime); }
+
+	LoadConfiguredDlls();
 
 	pPostMutexFunc(); // can't reach my functions from this class =(
 }	// and if i try to #include "ReplacementFuncs.h" here it says a lot of things are defined twice

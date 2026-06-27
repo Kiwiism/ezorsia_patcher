@@ -366,31 +366,21 @@ static _CWvsApp__InitializeResMan_t _sub_9F7159_append = [](CWvsApp* pThis, void
 	// Hook_sub_9F7159_initialized = false;
 	// }
 	resmanSTARTED = true;
-	// loadMyShA();
-	// void* pData = nullptr;
-	// void* pFileSystem = nullptr;
-	// void* pUnkOuter = 0;
-	// void* nPriority = 0;
-	// void* sPath;
-	// edx = nullptr
-	//
-	//// Resman
-	// _PcCreateObject_IWzResMan(L"ResMan", &g_rm, pUnkOuter);	//?(void*) //?&g
 
-	// void* pIWzResMan_Instance = *&g_rm;	//?&g	//custom added, find existing instance
-	//!!auto IWzResMan__SetResManParam = *(void(__fastcall**)(void*, void*, void*, int, int, int))((*(int*)pIWzResMan_Instance) + 20); // Hard Coded
-	//!!IWzResMan__SetResManParam(nullptr, nullptr, pIWzResMan_Instance, RC_AUTO_REPARSE | RC_AUTO_SERIALIZE, -1, -1);
+	_sub_9F7159(pThis, nullptr);
 
-	//// NameSpace
-	// _PcCreateObject_IWzNameSpace(L"NameSpace", &g_root, pUnkOuter);
+	void* pFileSystem = nullptr;
+	void* pUnkOuter = nullptr;
+	int nPriority = 0;
 
-	// void* pIWzNameSpace_Instance = &g_root;
-	// auto PcSetRootNameSpace = (void(__cdecl*)(void*, int)) * (int*)pNameSpace; // Hard Coded
-	// PcSetRootNameSpace(pIWzNameSpace_Instance, 1);
+	_sub_9FB01F(L"NameSpace#FileSystem", &pFileSystem, pUnkOuter);
+	Ztl_bstr_t dataPath = Ztl_bstr_t();
+	_sub_425ADD(&dataPath, nullptr, "./Data");
+	_sub_9F7964(pFileSystem, nullptr, dataPath);
 
-	//// Game FileSystem
-	// _PcCreateObject_IWzFileSystem(L"NameSpace#FileSystem", &pFileSystem, pUnkOuter);
-	_sub_9F7159(pThis, nullptr);	// comment this out and uncomment below if testing, supposed to load from .img files in folders but i never got to test it
+	Ztl_bstr_t dataMountRoot = Ztl_bstr_t();
+	_sub_425ADD(&dataMountRoot, nullptr, "/");
+	_sub_9F790A(*g_root, nullptr, dataMountRoot, pFileSystem, nPriority);
 	resmanSTARTED = false;
 	// char sStartPath[MAX_PATH];
 	// GetModuleFileNameA(NULL, sStartPath, MAX_PATH);
