@@ -3,6 +3,7 @@
 #include "AdventureCodecaves.h"
 #include "AdventurePatches.h"
 #include "PatchToggles.h"
+#include "ShadowPartnerAttacks.h"
 
 static_assert(PatchSettings::KnockbackDistance <= 0xFFFF, "KnockbackDistance must fit in 16 bits.");
 static_assert(PatchSettings::RushCooldownMs <= 0xFFFF, "RushCooldownMs must fit in 16 bits.");
@@ -21,6 +22,10 @@ static_assert(PatchSettings::MakerYellowStatThreshold <= 0xFF, "MakerYellowStatT
 void AdventurePatches::Apply()
 {
 	// Gameplay: custom skills
+
+#if PATCH_SHADOW_PARTNER_MELEE_MAGIC
+	ShadowPartnerAttacks::Apply();
+#endif
 
 #if PATCH_CUSTOM_ACTIVE_SKILLS
 	// Enable Custom Active Skills - Gwen

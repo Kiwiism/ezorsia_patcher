@@ -39,6 +39,7 @@
     <ClInclude Include="AdventurePatches.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="AdventureCodecaves.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="PatchToggles.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="ShadowPartnerAttacks.h"><Filter>Header Files</Filter></ClInclude>
     <ClInclude Include="AddyLocations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -177,5 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdventurePatches.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="ShadowPartnerAttacks.cpp"><Filter>Source Files</Filter></ClCompile>
   </ItemGroup>
 </Project>
