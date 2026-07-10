@@ -358,6 +358,29 @@ bool HookIWzNameSpace__Mount(bool bEnable)
 // }
 // bool Hook_sub_9F7159_initialized = true;
 bool resmanSTARTED = false;
+bool ezorsiaImgMounted = false;
+
+static void LogEzorsiaImgLookup(const wchar_t* path, HRESULT hr, unsigned short vt)
+{
+	static long logCount = 0;
+	if (!ezorsiaImgMounted || !path || logCount++ > 20000) {
+		return;
+	}
+
+	char pathBuffer[1024] = { 0 };
+	WideCharToMultiByte(CP_UTF8, 0, path, -1, pathBuffer, sizeof(pathBuffer) - 1, nullptr, nullptr);
+
+	char line[1400] = { 0 };
+	sprintf_s(line, "hr=0x%08X vt=%u path=%s\r\n", static_cast<unsigned int>(hr), vt, pathBuffer);
+
+	HANDLE hFile = CreateFileA("ezorsia-resource-lookup.log", FILE_APPEND_DATA, FILE_SHARE_READ, nullptr, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
+	if (hFile != INVALID_HANDLE_VALUE) {
+		DWORD written = 0;
+		WriteFile(hFile, line, static_cast<DWORD>(strlen(line)), &written, nullptr);
+		CloseHandle(hFile);
+	}
+}
+
 static _CWvsApp__InitializeResMan_t _sub_9F7159_append = [](CWvsApp* pThis, void* edx) {
 	//-> void {_CWvsApp__InitializeResMan(pThis, edx);
 	// if (Hook_sub_9F7159_initialized)
@@ -381,6 +404,7 @@ static _CWvsApp__InitializeResMan_t _sub_9F7159_append = [](CWvsApp* pThis, void
 	Ztl_bstr_t dataMountRoot = Ztl_bstr_t();
 	_sub_425ADD(&dataMountRoot, nullptr, "/");
 	_sub_9F790A(*g_root, nullptr, dataMountRoot, pFileSystem, nPriority);
+	ezorsiaImgMounted = true;
 	resmanSTARTED = false;
 	// char sStartPath[MAX_PATH];
 	// GetModuleFileNameA(NULL, sStartPath, MAX_PATH);
@@ -2383,11 +2407,12 @@ static _sub_5D995B_t _sub_5D995B_Hook = [](void* pThis, void* edx, Ztl_variant_t
 	{
 		ZSecureCrypt_Init = true; v4 = v13;
 	}
-	v5(v3, v4, &pvarg);
+	HRESULT lookupResult = static_cast<HRESULT>(v5(v3, v4, &pvarg));
+	LogEzorsiaImgLookup(v4, lookupResult, pvarg.vt);
 	// std::cout << "_sub_5D995B vals: " << *(DWORD*)v3 << " / " << *v4 << " / " << *(DWORD*)(&pvarg) << std::endl;//Sleep(22000);
-	if ((HRESULT)v5 < 0)
+	if (lookupResult < 0)
 	{
-		_com_issue_errorex((HRESULT)v5, (IUnknown*)v3, *_unk_BD8F28); ///GUID _GUID_2aeeeb36_a4e1_4e2b_8f6f_2e7bdec5c53d
+		_com_issue_errorex(lookupResult, (IUnknown*)v3, *_unk_BD8F28); ///GUID _GUID_2aeeeb36_a4e1_4e2b_8f6f_2e7bdec5c53d
 	}
 	_sub_4039AC(result, &pvarg, 0); // non-existent func in v95//int __thiscall sub_4039AC(VARIANTARG *pvargDest, VARIANTARG *pvargSrc, char) //works with v95 overwrite//memcpy_s(result, 0x10u, &pvarg, 0x10u);//_sub_4039AC(result, &pvarg, 0); //works with v95 overwrite
 	pvarg.vt = 0;
