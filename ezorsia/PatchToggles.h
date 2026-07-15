@@ -39,6 +39,7 @@ namespace PatchSettings
 // Gameplay: skills
 #define PATCH_CUSTOM_ACTIVE_SKILLS                   0    // Enables the cleanv83 custom active-skill hook.
 #define PATCH_SHADOW_PARTNER_MELEE_MAGIC             1    // Experimental: extends Shadow Partner lines to melee and magic attacks.
+#define PATCH_CRIT_SIGNAL_PACKET                     0    // Encodes outgoing crit damage for bystanders; requires matching server support.
 #define PATCH_LTRB_NON_BULLET_SKILLS                 0    // Enables LTRB areas for selected non-bullet skills.
 #define PATCH_LTRB_CUSTOM_SHOOT_SKILLS               0    // Enables LTRB areas for selected custom shoot skills.
 #define PATCH_ARAN_COMBO_UPTIME                      1    // Uses PatchSettings::AranComboDurationMs for combo duration.

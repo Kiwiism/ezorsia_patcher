@@ -177,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="AdventurePatches.h" />
     <ClInclude Include="AdventureCodecaves.h" />
+    <ClInclude Include="CritSignalPacket.h" />
     <ClInclude Include="PatchToggles.h" />
     <ClInclude Include="ShadowPartnerAttacks.h" />
     <ClInclude Include="AddyLocations.h">
@@ -218,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdventurePatches.cpp" />
+    <ClCompile Include="CritSignalPacket.cpp" />
     <ClCompile Include="ShadowPartnerAttacks.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="dinput8.cpp" />

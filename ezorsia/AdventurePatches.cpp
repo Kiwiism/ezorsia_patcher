@@ -2,6 +2,7 @@
 #include "AddyLocations.h"
 #include "AdventureCodecaves.h"
 #include "AdventurePatches.h"
+#include "CritSignalPacket.h"
 #include "PatchToggles.h"
 #include "ShadowPartnerAttacks.h"
 
@@ -25,6 +26,10 @@ void AdventurePatches::Apply()
 
 #if PATCH_SHADOW_PARTNER_MELEE_MAGIC
 	ShadowPartnerAttacks::Apply();
+#endif
+
+#if PATCH_CRIT_SIGNAL_PACKET
+	CritSignalPacket::Apply();
 #endif
 
 #if PATCH_CUSTOM_ACTIVE_SKILLS
